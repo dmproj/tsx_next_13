@@ -5,15 +5,15 @@ import Button from "../navbar/Button";
 
 interface ModalProps {
   isOpen: boolean;
-  onClose: () => {};
-  onSubmit: () => {};
-  title: string;
-  body: React.ReactElement;
-  footer: React.ReactElement;
-  actionLabel: string;
-  disabled: boolean;
-  secondaryAction: () => {};
-  secondaryLayout: () => {};
+  onClose?: () => {};
+  onSubmit?: () => {};
+  title?: string;
+  body?: React.ReactElement;
+  footer?: React.ReactElement;
+  actionLabel?: string;
+  disabled?: boolean;
+  secondaryAction?: () => {};
+  secondaryActionLabel?: string;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -26,7 +26,7 @@ const Modal: React.FC<ModalProps> = ({
   actionLabel,
   disabled,
   secondaryAction,
-  secondaryLayout,
+  secondaryActionLabel,
 }) => {
   const [showModal, setShowModal] = useState(isOpen);
   useEffect(() => {
@@ -87,7 +87,19 @@ const Modal: React.FC<ModalProps> = ({
               {/* FOOTER */}
               <div className="flex flex-col gap-2 p-6">
                 <div className="flex flex-row items-center gap-4 w-fill">
-                  <Button onClick={() => {}} label="LABEL" />
+                  {secondaryAction && secondaryActionLabel && (
+                    <Button
+                      outline
+                      disabled={disabled}
+                      label={secondaryActionLabel}
+                      onClick={handleSecondaryAction}
+                    />
+                  )}
+                  <Button
+                    disabled={disabled}
+                    label={secondaryActionLabel}
+                    onClick={handleSecondaryAction}
+                  />
                 </div>
               </div>
             </div>
