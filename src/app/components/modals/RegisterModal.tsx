@@ -11,7 +11,7 @@ import Modal from "./Modal";
 import Heading from "../Heading";
 import Input from "../inputs/Input";
 import Button from "../navbar/Button";
-import {AiFillGoogleCircle, AiFillGithub} from "react-icons/ai"
+import { AiFillGoogleCircle, AiFillGithub } from "react-icons/ai";
 
 const RegisterModal = () => {
   const registerModal = useRegisterModal();
@@ -78,17 +78,18 @@ const RegisterModal = () => {
     <div className="flex flex-col gap-4 mt-3">
       <hr />
       <Button
-      outline
-      label="continue with fg"
-      icon={AiFillGoogleCircle}
-      onClick={()=>{}}
+        outline
+        label="continue with fg"
+        icon={AiFillGoogleCircle}
+        onClick={() => {}}
       />
-      <Button
-      outline
-      label="continue with gf"
-      icon={AiFillGithub}
-      onClick={()=>{}}
-      />
+      <Button outline label="continue with gf" icon={AiFillGithub} onClick={() => {}} />
+      <div className="text-neutral-500 text-center mt-4 font-light">
+        <div className="justify-center flex flex-row items-center gap-2">
+          <div>Already have an account?</div>
+          <div onClick={registerModal.onClose} className="text-neutral-800 cursor-pointer hower:underline">Log in</div>
+        </div>
+      </div>
     </div>
   );
 
