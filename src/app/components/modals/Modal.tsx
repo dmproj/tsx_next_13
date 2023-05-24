@@ -6,11 +6,11 @@ import Button from "../navbar/Button";
 interface ModalProps {
   isOpen: boolean;
   onClose?: () => {};
-  onSubmit?: () => {};
+  onSubmit: () => {};
   title?: string;
   body?: React.ReactElement;
   footer?: React.ReactElement;
-  actionLabel?: string;
+  actionLabel: string;
   disabled?: boolean;
   secondaryAction?: () => {};
   secondaryActionLabel?: string;
@@ -97,10 +97,12 @@ const Modal: React.FC<ModalProps> = ({
                   )}
                   <Button
                     disabled={disabled}
-                    label={secondaryActionLabel}
+                    label={actionLabel}
                     onClick={handleSecondaryAction}
+                    onSubmit={handleSubmit}
                   />
                 </div>
+                {footer}
               </div>
             </div>
           </div>

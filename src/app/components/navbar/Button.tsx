@@ -8,7 +8,8 @@ interface ButtonProps {
   disabled?: boolean;
   outline?: boolean;
   small?: boolean;
-  Icon?: IconType;
+  icon?: IconType;
+  onSubmit: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -17,11 +18,12 @@ const Button: React.FC<ButtonProps> = ({
   disabled,
   outline,
   small,
-  Icon,
+  icon:Icon,
+  onSubmit
 }) => {
   return (
     <button
-      onClick={onClick}
+      onClick={onSubmit}
       disabled={disabled}
       className={` relative disabled:opacity-70 disabled:cursor-not-allowed rounded-lg hover:opacity-80 transition w-full
   ${outline ? "bg-white" : "bg-rose-500"}
