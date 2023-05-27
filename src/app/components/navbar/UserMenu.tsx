@@ -6,6 +6,7 @@ import MenuItem from "./MenuItem";
 import { User } from "@prisma/client";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
+import { signOut } from "next-auth/react";
 
 interface UserMenuProps {
   currenUser?: User | null;
@@ -18,6 +19,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   const toggleOpen = useCallback(() => {
     setIsOpen((value) => !value);
   }, []);
+
 
   return (
     <div className="relative">
@@ -73,7 +75,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                 <MenuItem onClick={()=>{}} label="My properties" />
                 <MenuItem onClick={()=>{}} label="My home" />
                 <hr />
-                <MenuItem onClick={()=>{}} label="Logout" />
+                <MenuItem onClick={()=>signOut()} label="Logout" />
               </>
             ) : (
               <>
